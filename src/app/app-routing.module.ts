@@ -1,3 +1,4 @@
+import { ScoreComponent } from './components/score/score.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ContactComponent } from './components/contact/contact.component';
@@ -28,6 +29,11 @@ const routes: Routes = [
   {
     path:'login',
     component: LoginComponent,
+
+  },
+  {
+    path:'score',
+    component: ScoreComponent,
 
   },
   {

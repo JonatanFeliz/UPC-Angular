@@ -10,6 +10,9 @@ import { HowtoplayComponent } from './components/howtoplay/howtoplay.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { TeamComponent } from './components/team/team.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { ScoreComponent } from './components/score/score.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,10 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     HowtoplayComponent,
     ContactComponent,
     TeamComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    NavbarComponent,
+    FooterComponent,
+    ScoreComponent
   ],
   imports: [
     BrowserModule,
