@@ -1,4 +1,5 @@
-import { ScoreComponent } from './components/score/score.component';
+import { TournamentUpdateComponent } from './components/tournament-update/tournament-update.component';
+import { TournamentComponent } from './components/tournament/tournament.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ContactComponent } from './components/contact/contact.component';
@@ -8,6 +9,7 @@ import { HomeComponent } from './components/home/home.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
+import { TournamentAddComponent } from './components/tournament-add/tournament-add.component';
 
 const routes: Routes = [
   {
@@ -32,8 +34,18 @@ const routes: Routes = [
 
   },
   {
-    path:'score',
-    component: ScoreComponent,
+    path:'tournament',
+    component: TournamentComponent,
+
+  },
+  {
+    path:'tournament-add',
+    component: TournamentAddComponent,
+
+  },
+  {
+    path:'tournament-update',
+    component: TournamentUpdateComponent,
 
   },
   {
@@ -45,6 +57,12 @@ const routes: Routes = [
     redirectTo: '/home',
     pathMatch: 'full'
   },
+  // {
+  //   path: '',
+  //   canActivate: [AuthGuard],
+  //   component: AppComponent
+  // },
+
   { path: '**', 
    component: PageNotFoundComponent 
   },

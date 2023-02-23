@@ -1,0 +1,86 @@
+<app-navbar></app-navbar>
+
+<div class="container" *ngIf="oculta_list">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+      <h2 class="h2">Tournaments List</h2>
+    </div>
+    <div class="table-responsive">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Fecha</th>
+            <th class="text-center" scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of Tournaments[0]; let i = index">
+            <th scope="row">{{i+1}}</th>
+            <td>{{item.name}}</td>
+            <td>{{item.date | date:'shortDate'}}</td>
+            <td class="text-center">
+              <button class="btn btn-sm btn-primary" (click)="edit(item)">Edit</button>
+              <button class="btn btn-sm btn-danger" (click)="delete(item.id, i)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+</div>
+
+<section *ngIf="oculta_update">
+  <form #formPlantilla="ngForm" class="w-25 position-absolute top-50 start-50 translate-middle" (submit)="submit()">
+    <div class="container px-5 py-4 shadow-lg p-3 mb-5 bg-body rounded">
+    <h1 class="text-center mb-3">Modificar torneo</h1>
+    
+    <label>Nombre:</label>
+    <input name="nom" #nom="ngModel" type="text" [(ngModel)]="itemFormulario.name" required pattern="[ñÑçÇüÜïÏa-zA-Z_ ]*$" maxlength="50" class="form-control">
+    <div *ngIf="nom.errors?.['required'] && nom.touched" class="text-danger">
+        Aquest camp és obligatori
+    </div>
+    <div *ngIf="nom.errors?.['pattern'] && nom.touched" class="text-danger">
+        Caracters incorrectes
+    </div>
+    
+    
+    <br>
+    
+    <label>Fecha</label>
+    <input name="text" #fecha="ngModel" type="date" [(ngModel)]="itemFormulario.date" required class="form-control" placeholder="yyyy-mm-dd">
+    <div *ngIf="fecha.errors?.['required'] && fecha.touched" class="text-danger">
+        Aquest camp és obligatori
+    </div>
+    
+    
+    
+    
+    <button type="submit" [disabled]="formPlantilla.invalid" class="btn btn-primary form-control">Modificar</button>
+    </div>
+</form>
+  <!-- <div class="row justify-content-center mt-5">
+    <div class="col-md-4">
+        <form [formGroup]="update" (ngSubmit)="submit()">
+          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h2 class="h2">Tournaments Update</h2>
+          </div>
+          <div class="form-group">
+            <label>Name</label>
+            <input class="form-control" type="text" [(ngModel)]="itemFormulario.name" formControlName="name" required>
+          </div>
+  
+          <div class="form-group">
+            <label>Fecha</label>
+            <input class="form-control" type="date" [(ngModel)]="itemFormulario.date" formControlName="date" required>
+          </div>
+  
+  
+          <div class="form-group">
+            <button class="btn btn-primary btn-block" type="submit">Actualizar Torneo</button>
+          </div>
+        </form>
+    </div>
+  </div> -->
+</section>
+
+<app-footer></app-footer>

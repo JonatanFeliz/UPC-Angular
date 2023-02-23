@@ -9,29 +9,61 @@
                
             </div>
             <div class="col-6 p-3" style="background-color: #0E131F">
-                <form action="" method="post" class="row g-3">
+                <form action="" method="post" [formGroup]="registerReactivo" class="row g-3">
                     
                     <h2 class="text-center" style="color: #5EE4A3">Registro</h2>
+                    <!--Name-->
                     <div class="col-md-6 form-floating">
-                      <input type="text" class="form-control rounded-pill" id="name" name="name" placeholder="> Nombre" style="background-color: #0E131F; border-color:#5EE4A3">
-                      <label for="name" style="color: #5EE4A3">> Nombre</label>
+                        <input type="text" class="form-control rounded-pill" id="name" name="name" formControlName="name" placeholder="> Nombre" style="background-color: #0E131F; border-color:#5EE4A3">
+                        <label for="name" style="color: #5EE4A3">> Nombre</label>
+                        <!--Errors-->
+                        <span *ngIf="this.registerReactivo.get('name')?.errors?.['required'] && this.registerReactivo.get('name')?.touched" class="text-danger">
+                            * Hola
+                        </span>
                     </div>
+                    <!--Last Name-->
                     <div class="col-md-6 form-floating">
-                      <input type="text" class="form-control rounded-pill" id="last_name" name="last_name" placeholder="> Apellidos" style="background-color: #0E131F; border-color:#5EE4A3">
+                      <input type="text" class="form-control rounded-pill" id="last_name" name="last_name" formControlName="lastname" placeholder="> Apellidos" style="background-color: #0E131F; border-color:#5EE4A3">
                       <label for="lastname" style="color: #5EE4A3">> Apellido</label>
+                      <!--Errors-->
+                      <span *ngIf="this.registerReactivo.get('lastname')?.errors?.['required'] && this.registerReactivo.get('lastname')?.touched" class="text-danger">
+                        *
+                    </span>
                     </div>
+                    <!--Email-->
                     <div class="col-md-12 form-floating">
-                        <input type="email" class="form-control rounded-pill" id="email" name="email" placeholder="> Email" style="background-color: #0E131F; border-color:#5EE4A3">
-                        <label for="email" style="color: #5EE4A3">> Email</label>
+                        <input type="email" class="form-control rounded-pill" id="email" name="email" formControlName="email" placeholder="> Email" style="background-color: #0E131F; border-color:#5EE4A3">
+                        <label for="email" style="color: #5EE4A3">>Email</label>
+                        <!--Errors-->
+                        <span *ngIf="this.registerReactivo.get('email')?.errors?.['required'] && this.registerReactivo.get('email')?.touched" class="text-danger">
+                            *
+                        </span>
+                        <span *ngIf="this.registerReactivo.get('email')?.errors?.['pattern'] && this.registerReactivo.get('email')?.touched" class="text-danger">
+                            Formato Email
+                        </span>
                     </div>
+                    <!--Password-->
                     <div class="col-md-6 form-floating">
-                        <input type="password" class="form-control rounded-pill" name="password" id="password" placeholder="> Contraseña" style="background-color: #0E131F; border-color:#5EE4A3">
+                        <input type="password" class="form-control rounded-pill" name="password" id="password" formControlName="password" placeholder="> Contraseña" style="background-color: #0E131F; border-color:#5EE4A3">
                         <label for="password" style="color: #5EE4A3">> Contraseña</label>
+                        <!--Errors-->
+                        <span *ngIf="this.registerReactivo.get('password')?.errors?.['required'] && this.registerReactivo.get('password')?.touched" class="text-danger">
+                            *
+                        </span>
                     </div>
+                    <!--Repeat Password-->
                     <div class="col-md-6 form-floating">
-                        <input type="password" class="form-control rounded-pill text-white" name="re_password" id="password_confirmation" placeholder="> Repite Contraseña" style="background-color: #0E131F; border-color:#5EE4A3">
+                        <input type="password" class="form-control rounded-pill text-white" name="re_password" id="password_confirmation" formControlName="repeatpassword" appRepeatPassword placeholder="> Repite Contraseña" style="background-color: #0E131F; border-color:#5EE4A3">
                         <label for="re_password" style="color: #5EE4A3">> Repetir Contraseña</label>
-                    </div>            
+                        <!--Errors-->
+                        <span *ngIf="this.registerReactivo.get('repeatpassword')?.errors?.['required'] && this.registerReactivo.get('repeatpassword')?.touched" class="text-danger">
+                            *
+                        </span>
+                        <span *ngIf="this.registerReactivo.get('repeatpassword')?.errors?.['repitecontra'] && this.registerReactivo.get('repeatpassword')?.touched" class="textred">
+                            Debe conincidir con las Contraseña
+                        </span>
+                    </div>     
+                    <!--Submit button-->       
                     <div class="text-center mb-4">
                         <button type="submit" class="btn text-white w-25 rounded-0" style="background-color: #5EE4A3" type="submit" value="Registrarse">Unete</button>
                     </div>
