@@ -17,6 +17,13 @@
 //     return this.userSubject.value;
 //   }
 //   constructor(private _http: HttpClient) { 
-    
+//     return this.userSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('user')!));
+//     this.user=this.userSubject.asObservable();
+//   }
+
+//   logout(){
+//     localStorage.removeItem('user');
+     
+//     this.userSubject.next(JSON.parse(null!));
 //   }
 // }

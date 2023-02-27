@@ -10,7 +10,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { TournamentAddComponent } from './components/tournament-add/tournament-add.component';
-
+// import { ProtectRouteGuard } from './auth/protect-route.guard';
 const routes: Routes = [
   {
     path:'home',
@@ -57,11 +57,7 @@ const routes: Routes = [
     redirectTo: '/home',
     pathMatch: 'full'
   },
-  // {
-  //   path: '',
-  //   canActivate: [AuthGuard],
-  //   component: AppComponent
-  // },
+  // { path: 'tournament', component: TournamentComponent, canActivate:[ProtectRouteGuard] },
 
   { path: '**', 
    component: PageNotFoundComponent 

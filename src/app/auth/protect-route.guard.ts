@@ -10,13 +10,15 @@
 //   constructor(private router:Router, private _http: HttpService){
 
 //   }
-//   canActivate(
-//     route: ActivatedRouteSnapshot,
-//     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-//       if (!this.auth.isLogin()) {
-//         return this.router.navigate(['/login']).then(() => false);
-//       }
-//     return true;
+//   canActivate(route: ActivatedRouteSnapshot) {
+//     const usuario=this._http.usuariData();
+//     //console.log("erererer",usuario);
+//     if(usuario!=null){
+
+//       return true;
+//     } 
+//       this.route.navigate(['/home']);
+//       return false;
 //   }
   
 // }
