@@ -1,4 +1,3 @@
-import { TournamentUpdateComponent } from './components/tournament-update/tournament-update.component';
 import { TournamentComponent } from './components/tournament/tournament.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -41,11 +40,6 @@ const routes: Routes = [
   {
     path:'tournament-add',
     component: TournamentAddComponent,
-
-  },
-  {
-    path:'tournament-update',
-    component: TournamentUpdateComponent,
 
   },
   {

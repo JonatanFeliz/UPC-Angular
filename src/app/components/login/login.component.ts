@@ -1,5 +1,6 @@
+import { UserService } from './../../services/user.service';
 import { User } from './../../model/user';
-import { Component, OnInit } from '@angular/core';
+import { Component, NgZone, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -13,7 +14,7 @@ export class LoginComponent implements OnInit{
   email!:any;
   pass!:any;
 
-  constructor(private route: Router) {}
+  constructor(private router: Router, private user:UserService, private ngZone: NgZone) {}
 
   
 
@@ -32,6 +33,24 @@ export class LoginComponent implements OnInit{
 
   submit(){
 
+    var email = this.login.get('email')?.value; 
+    var pass = this.login.get('pass')?.value;
+    
+    var data = {
+      "email":    email,
+      "password": pass
+    }
+
+    this.user.validateLogin(data)
+    .subscribe(res => {
+        console.log(res);
+        console.log('User login successfully!')
+        this.ngZone.run(() => this.router.navigate(['home']))
+      }, (err) => {
+        console.log(err);
+    });
+
+    // this.router.navigate(['/events']);
     
   }
 }

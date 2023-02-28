@@ -12,6 +12,8 @@ export class TournamentComponent implements OnInit{
 
   oculta_update:boolean = false;
   oculta_list:boolean   = true;
+  oculta_actions:boolean = true;
+
   Tournaments:any=[];
   itemsNumber = 1;
 

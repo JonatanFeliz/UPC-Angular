@@ -22,16 +22,13 @@
             <a class="nav-link text-white" href="/tournament" style="color:FFFFFF;">Torneos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white" href="/tournament-add" style="color:FFFFFF;">Torneos Add</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-white" href="/tournament-update" style="color:FFFFFF;">Torneos Update</a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link text-white" href="/contact" style="color:FFFFFF;">Contacto</a>
           </li>
-          <button type="button" class="btn btn-light text-body ms-3 rounded-pill">
+          <button *ngIf="oculta_login" type="button" class="btn btn-light text-body ms-3 rounded-pill">
             <a href="/login" class="text-decoration-none text-body">Iniciar Sesión</a> 
+          </button>
+          <button *ngIf="oculta_logout" type="button" class="btn btn-danger text-body ms-3 rounded-pill">
+            <a class="text-decoration-none text-white">Cerrar Sesión</a>
           </button>
         </ul>
       </div>

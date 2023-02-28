@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
+  oculta_login:boolean = true;
+  oculta_logout:boolean = false;
+
 
 }

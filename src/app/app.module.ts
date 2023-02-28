@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,7 +18,7 @@ import { ComparePasswordsDirective } from './directives/compare-passwords.direct
 import { ValidateNameDirective } from './directives/validate-name.directive';
 import { TournamentComponent } from './components/tournament/tournament.component';
 import { TournamentAddComponent } from './components/tournament-add/tournament-add.component';
-import { TournamentUpdateComponent } from './components/tournament-update/tournament-update.component';
+import { AuthInterceptorService } from './services/auth-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -35,8 +35,7 @@ import { TournamentUpdateComponent } from './components/tournament-update/tourna
     ComparePasswordsDirective,
     ValidateNameDirective,
     TournamentComponent,
-    TournamentAddComponent,
-    TournamentUpdateComponent
+    TournamentAddComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +44,11 @@ import { TournamentUpdateComponent } from './components/tournament-update/tourna
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptorService,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
