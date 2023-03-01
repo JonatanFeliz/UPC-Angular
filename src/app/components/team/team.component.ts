@@ -7,6 +7,8 @@ import { Component } from '@angular/core';
 })
 export class TeamComponent {
 
+  // page information
+
   img_url="./../../../assets/img/";
 
   names_upc = ["Laura Fernandez", "Marina Iniesta", "Carla Abascal", "Alejandro"];

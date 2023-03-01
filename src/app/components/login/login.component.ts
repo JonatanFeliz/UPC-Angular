@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit{
   constructor(private router: Router, private user:UserService, private ngZone: NgZone) {}
 
   
-
+  // validate login form (Reactive)
   login=new FormGroup({
     email:new FormControl('',[
       Validators.required
@@ -31,6 +31,7 @@ export class LoginComponent implements OnInit{
 
   }
 
+  // send login data to service and validate user
   submit(){
 
     var email = this.login.get('email')?.value; 
@@ -43,14 +44,16 @@ export class LoginComponent implements OnInit{
 
     this.user.validateLogin(data)
     .subscribe(res => {
-        console.log(res);
+        localStorage.setItem('token',res);
         console.log('User login successfully!')
-        this.ngZone.run(() => this.router.navigate(['home']))
+
+        console.log(localStorage.getItem('token'));
+        this.ngZone.run(() => this.router.navigate(['home'])) // if all good return to home
       }, (err) => {
         console.log(err);
     });
 
-    // this.router.navigate(['/events']);
+    
     
   }
 }

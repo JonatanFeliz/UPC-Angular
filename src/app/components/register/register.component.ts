@@ -13,6 +13,7 @@ export class RegisterComponent implements OnInit{
 
   constructor(private router: Router, private user:UserService, private ngZone: NgZone){}
 
+  // validate register form (Reactive)
   registerReactivo = new FormGroup({
     name: new FormControl('', [
       Validators.required
@@ -34,7 +35,7 @@ export class RegisterComponent implements OnInit{
 
   ngOnInit():void{}
 
-
+  // send register data to service and add user
   submit(){
 
     var name      = this.registerReactivo.get('name')?.value; 

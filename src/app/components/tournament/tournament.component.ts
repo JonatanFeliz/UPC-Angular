@@ -25,45 +25,39 @@ export class TournamentComponent implements OnInit{
     this.listTournaments();
   }
 
+  //delete tournament from database
   delete(id:any, i:any) {
     console.log(id);
     console.log(i);
     if(window.confirm('Do you want to go ahead?')) {
       this.crudService.deleteTournament(id).subscribe((res) => {
-        // this.Tournaments.splice(i, 1);
         this.listTournaments();
-        //window.location.reload();
       })
     }
-    // this.router.navigate(['tournament']);
-    //window.location.reload()
-    
   }
 
-
+  // get tournaments for list
   listTournaments(){
     this.crudService.GetTournaments().subscribe(res => {
-      //console.log(res)
       this.Tournaments = Object.values(res);
-      console.log(this.Tournaments)
     });
   }
 
+  // show and hide sections for edit or show data
   edit(item:any){
     this.oculta_update = true;
     this.oculta_list   = false;
 
     this.itemFormulario=item;
-    console.log(this.itemFormulario);
 
     let date = new Date(this.itemFormulario.date);
 
     this.itemFormulario.date = this.Dateformat(date);
-    console.log(this.itemFormulario.date);
 
 
   }
 
+  // send data for update tournament
   submit() {
     console.log("Parametros a actualizar");
     console.log(this.itemFormulario.id);
@@ -76,14 +70,13 @@ export class TournamentComponent implements OnInit{
     this.oculta_update = false;
     this.oculta_list   = true;
 
-    
   }
 
+  // send data for update tournament
   onUpdate(id:number,name:string,date:string): any {
     this.crudService.updateTournament(id, name, date)
     .subscribe(() => {
         console.log('Tournament updated successfully!')
-        // this.ngZone.run(() => this.router.navigate(['tournament']))
       }, (err) => {
         console.log(err);
     });

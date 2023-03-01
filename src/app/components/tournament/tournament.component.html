@@ -44,22 +44,15 @@
       <h1 class="text-center mb-3">Modificar torneo</h1>
       
       <label>Nombre:</label>
-      <input name="nom" #nom="ngModel" type="text" [(ngModel)]="itemFormulario.name" required pattern="[ñÑçÇüÜïÏa-zA-Z_ ]*$" maxlength="50" class="form-control">
-      <div *ngIf="nom.errors?.['required'] && nom.touched" class="text-danger">
-          Aquest camp és obligatori
-      </div>
-      <div *ngIf="nom.errors?.['pattern'] && nom.touched" class="text-danger">
-          Caracters incorrectes
-      </div>
+      <input name="nom" #nom="ngModel" type="text" [(ngModel)]="itemFormulario.name" pattern="[ñÑçÇüÜïÏa-zA-Z_ ]*$" maxlength="50" class="form-control" required>
+      
       
       
       <br>
       
       <label>Fecha:</label>
-      <input name="text" #fecha="ngModel" type="date" [(ngModel)]="itemFormulario.date" required class="form-control" placeholder="yyyy-mm-dd">
-      <div *ngIf="fecha.errors?.['required'] && fecha.touched" class="text-danger">
-          Aquest camp és obligatori
-      </div>
+      <input name="text" #fecha="ngModel" type="date" [(ngModel)]="itemFormulario.date" class="form-control" placeholder="yyyy-mm-dd" required>
+      
       
       
       
