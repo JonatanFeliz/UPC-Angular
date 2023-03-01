@@ -1,0 +1,67 @@
+.nav{
+    color: white;
+}
+.nav:hover{
+    color: green;
+}
+
+.text-success{
+    color: #5ee4a3;
+ }
+ .btn-download{
+     background-color: #5ee4a3;
+ }
+
+ .btn-download:hover{
+    background-color: #34B36E;
+ }
+
+ .border-green{
+     border-color: #5ee4a3;
+ }
+ .text-green{
+     color: #5ee4a3;  
+ }
+
+ .bg-dark2{
+    background-color: #0E131F;
+ }
+
+
+ body, html { 
+    margin:0; 
+    padding:0; 
+    height:100%; 
+  }
+
+
+  footer { 
+    width:100%; 
+  }
+
+  .background-login{
+    background-image: url('./assets/img/hecker.jpg');
+    background-repeat: no-repeat;
+  }
+
+  .input_login{
+    background-color: #0E131F; 
+    border-color:#5EE4A3;
+  }
+
+  .input_login:focus{
+    background-color: #0E131F; 
+    border-color:#5EE4A3;
+  }
+
+  .bg-verde{
+    background-color:#5EE4A3;
+  }
+
+  .background_dark{
+    background-color: #0E131F;
+  }
+
+  .background_dark_blue{
+    background-color: #0A2640;
+  }

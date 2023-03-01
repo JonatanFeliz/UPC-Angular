@@ -1,0 +1,38 @@
+<app-navbar></app-navbar>
+
+<section class="row justify-content-center mt-5">
+  <form [formGroup]="tournamentForm" class="w-25" (ngSubmit)="onSubmit()">
+    <div class="container px-5 py-4 shadow-lg p-3 mb-5 bg-body rounded">
+      <h1 class="text-center mb-3">Crear torneo</h1>
+        <div class="form-group">
+          <label>Name</label>
+          <input class="form-control" type="text" id="name" name="name" formControlName="name">
+          <span *ngIf="this.tournamentForm.get('name')?.errors?.['required'] && this.tournamentForm.get('name')?.touched" class="text-danger">
+            * Campo requerido
+          </span>
+          <span *ngIf="this.tournamentForm.get('name')?.errors?.['maxlength'] && this.tournamentForm.get('name')?.touched" class="text-danger">
+            * Maximo 30 caracteres
+          </span>
+        </div>
+
+        <div class="form-group mt-3">
+          <label>Fecha</label>
+          <input class="form-control" type="date" id="date" name="date" formControlName="date">
+          <span *ngIf="this.tournamentForm.get('date')?.errors?.['required'] && this.tournamentForm.get('date')?.touched" class="text-danger">
+            * Campo requerido
+          </span>
+        </div>
+
+
+        <div class="form-group">
+          <button type="submit" [disabled]="tournamentForm.invalid" class="btn btn-primary form-control mt-3 col-4">Añadir Torneo</button>
+          <div class="d-flex justify-content-center">
+            <a href="/tournament" class="btn btn-danger mt-3">Volver</a>
+          </div>
+        </div>
+        
+    </div>
+  </form>
+</section>
+
+<app-footer></app-footer>

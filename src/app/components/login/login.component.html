@@ -1,0 +1,37 @@
+
+<section class="h-100 position-relative background-login">
+    <div class="container">
+        <div class="row position-absolute top-50 start-50 translate-middle">
+            <div class="col-6 background_dark">
+                <form class="row g-3 p-5" [formGroup]="login" (ngSubmit)="submit()"  method="post" action="">
+                  
+                  <h2 class="text-center text-green">Iniciar Sesión</h2>
+                  <div class="col-md-12 form-floating">
+                    <input type="text" formControlName="email" class="form-control rounded-pill input_login" name="email" id="email" placeholder="> Usuario">
+                    <label for="email" class="text-green">> Email</label>
+                    <div *ngIf="this.login.get('email')?.errors?.['required'] && this.login.get('email')?.touched" class="text-danger mt-2">
+                      Este campo es obligatorio*
+                  </div>
+                  </div>
+                  <div class="col-md-12 form-floating">
+                    <input type="text" formControlName="pass" class="form-control rounded-pill input_login" name="pass" id="pass" placeholder="> Contraseña">
+                    <label for="pass" class="text-green">> Contraseña</label>
+                    <div *ngIf="this.login.get('pass')?.errors?.['required'] && this.login.get('pass')?.touched" class="text-danger mt-2">
+                      Este campo es obligatorio*
+                  </div>
+                  </div>
+                  
+                  <div class="text-center mb-4">
+                      <p class="text-white">Si no tienes cuenta <a href="/register" class="text-decoration-none">Registrate</a></p>
+                      <button type="submit" [disabled]="login.invalid" class="btn text-white w-25 rounded-0 text-green bg-verde">Entrar</button>
+                  </div>
+
+                  <p *ngIf="oculta" class="text-center text-danger">Credencials incorrectes</p>
+
+                  <a href="/home" class="text-center text-decoration-none text-white">Volver a Home</a>
+                
+                </form>
+            </div>
+        </div>
+    </div>
+  </section>

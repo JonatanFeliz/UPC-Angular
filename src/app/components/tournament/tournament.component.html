@@ -1,0 +1,71 @@
+<app-navbar></app-navbar>
+
+<section *ngIf="oculta_list">
+  <div class="container text-center">
+      <h2 class="mt-5">Torneos</h2>
+
+      <div class="row justify-content-center">
+
+          <table class="table table-light my-5" style="width: 1000px">
+              <thead class="thead-light">
+                  <tr>
+                      <th>#</th>
+                      <th>Nombre</th>
+                      <th>Fecha</th>
+                      <th *ngIf="oculta_actions">Acciones</th>
+                  </tr>
+              </thead>
+  
+              <tbody>
+                  <tr *ngFor="let item of Tournaments[0]; let i = index">
+                    <th scope="row">{{i+1}}</th>
+                    <td>{{item.name}}</td>
+                    <td>{{item.date | date:'shortDate'}}</td>
+                    <td *ngIf="oculta_actions" class="text-center">
+                      <button class="btn btn-sm btn-primary" (click)="edit(item)">Edit</button>
+                      <button class="btn btn-sm btn-danger ms-3" (click)="delete(item.id, i)">Delete</button>
+                    </td>
+                  </tr>
+              </tbody>
+          </table>
+          
+
+      </div>
+      <a *ngIf="oculta_actions" href="/tournament-add" class="btn btn-success p-2 my-4">Crear Torneo</a>
+        
+  </div>
+
+</section>
+
+
+<section *ngIf="oculta_update" class="d-flex justify-content-center mt-5">
+  <form #formPlantilla="ngForm" class="w-25" (submit)="submit()">
+    <div class="container px-5 py-4 shadow-lg p-3 mb-5 bg-body rounded">
+      <h1 class="text-center mb-3">Modificar torneo</h1>
+      
+      <label>Nombre:</label>
+      <input name="nom" #nom="ngModel" type="text" [(ngModel)]="itemFormulario.name" maxlength="30" class="form-control" required>
+      <div *ngIf="nom.errors?.['required']" class="text-danger">
+        * Campo requerido
+      </div>
+      <div *ngIf="nom.errors?.['maxlength']" class="text-danger">
+        * Maximo 30 caracteres
+      </div>
+      <br>
+      
+      <label>Fecha:</label>
+      <input name="text" #fecha="ngModel" type="date" [(ngModel)]="itemFormulario.date" class="form-control" placeholder="yyyy-mm-dd" required>
+      <div *ngIf="fecha.errors?.['required']" class="text-danger">
+        * Campo requerido
+      </div>
+      
+      <button type="submit" class="btn btn-primary form-control mt-3 col-4">Modificar</button>
+      <div class="d-flex justify-content-center">
+        <a href="/tournament" class="btn btn-danger mt-3 col-3 ">Volver</a>
+      </div>
+      
+    </div>
+  </form>
+</section>
+
+<app-footer></app-footer>
